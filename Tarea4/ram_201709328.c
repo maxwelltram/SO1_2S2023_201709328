@@ -44,7 +44,7 @@ static int __init modulo_init(void)
 static void __exit modulo_cleanup(void)
 {
     remove_proc_entry("ram_201709328", NULL);
-    printk(KERN_INFO "Sistemas Operativos 1\n");
+    printk(KERN_INFO "Maxwellt Ramírez\n");
 }
 
 module_init(modulo_init);
