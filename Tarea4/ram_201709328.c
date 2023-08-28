@@ -36,7 +36,7 @@ static const struct file_operations meminfo_proc_fops = {
 
 static int __init ram_module_init(void) {
     printk(KERN_INFO "Número de carnet: 201709328\n");
-    proc_create("ram_201709328", 0, NULL, &meminfo_proc_fops);
+    proc_create("ram_201709328", 0, NULL, &meminfo_proc_ops);
     return 0;
 }
 
