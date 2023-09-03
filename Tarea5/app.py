@@ -1,15 +1,14 @@
 from flask import Flask
 import os
-from flask_cors import CORS
 
-App5 = Flask(__name__)
-CORS(App5)
+app = Flask(__name__)
 
-@App5.route('/')
+@app.route('/')
 def hello():
-    return f'Hola Mundo <201709328>'
+    return f'Hola Mundo <Carnet>'
 
 if __name__ == '__main__':
-    App5.run(debug=True, port=3300)
+    app.run(host='0.0.0.0', port=8080)
+
 
 
