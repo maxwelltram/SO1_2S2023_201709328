@@ -10,7 +10,7 @@ def hello():
     return f'Hola Mundo <201709328>'
 
 if __name__ == '__main__':
-    App5.run(host='0.0.0.0')
+    App5.run()
 
 
 
