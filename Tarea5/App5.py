@@ -7,7 +7,7 @@ CORS(App5)
 
 @App5.route('/')
 def hello():
-    return f'Hola Mundo <201709328>'
+    return f'Hola Mundo '
 
 if __name__ == '__main__':
     App5.run()
