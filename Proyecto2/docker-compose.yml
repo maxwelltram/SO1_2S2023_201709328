@@ -1,0 +1,69 @@
+#Inicio docker-compose
+version: "3" # Se indica el numero de version
+# usar una network interna para prueba
+
+services:
+  mysql_db:
+    container_name: mysql_db
+    image: 'mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql1234
+    command: --max_connections=200
+    ports:
+      - '3306:3306'
+    volumes:
+      - './data-mysql/:/var/lib/mysql'
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - './data-redis/:/data'
+
+  grpc_server:
+    container_name: grpc_server
+    image: 'melanialejandralopez/so1_proyecto_grpc_server'
+    build: ./gRPC-Server
+    ports:
+      - '50051:50051'
+    depends_on:
+      - mysql_db
+
+  grpc_client:
+    container_name: grpc_client
+    image: 'melanialejandralopez/so1_proyecto_grpc_lient'
+    build: ./gRPC-Client-api
+    ports:
+      - '3300:3300'
+    depends_on:
+      - grpc_server
+
+  redissub:
+    image: 'melanialejandralopez/so1_proyecto_redissub'
+    build: ./redisSub
+    container_name: redissub
+    depends_on:
+      - mysql_db
+      - redis
+
+  redispub:
+    image: 'melanialejandralopez/so1_proyecto_redispub'
+    build: ./redispub
+    ports:
+      - '3400:3400' # arreglar puertos 
+    container_name: redispub
+    depends_on:
+      - mysql_db
+      - redis
+  
+  api_server:
+    container_name: api_server
+    image: 'melanialejandralopez/so1_proyecto_api_server'
+    build: ./api
+    ports:
+      - '4200:4200' 
+    depends_on:
+      - mysql_db
+      - redis

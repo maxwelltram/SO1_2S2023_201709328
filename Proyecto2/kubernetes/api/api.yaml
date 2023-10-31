@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      role: api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: api
+    spec:
+      containers:
+      - name: api
+        image: melanialejandralopez/so1_proyecto_api_server
+        ports:
+        - containerPort: 4200
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-api
+spec:
+  #type: LoadBalancer
+  ports:
+  - port: 4200
+    targetPort: 4200
+  selector:
+    role: api

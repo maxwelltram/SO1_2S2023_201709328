@@ -1,0 +1,35 @@
+/* styles.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #ddd;
+  }
+  select {
+    padding: 8px; /* Añade espacio interno al ListBox */
+    margin-right: 10px; /* Añade margen derecho entre el ListBox y el botón */
+    border: 1px solid #ccc; /* Estilo de borde */
+  }
+  
+  button {
+    padding: 8px 16px; /* Añade espacio interno al botón */
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color de texto */
+    border: none; /* Quita el borde del botón */
+  }

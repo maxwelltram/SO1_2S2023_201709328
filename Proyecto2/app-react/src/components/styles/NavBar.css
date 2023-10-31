@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-image: url('https://img.freepik.com/free-photo/ultra-detailed-nebula-abstract-wallpaper-4_1562-749.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698278400&semt=ais');
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .logo-container {
+    padding-top: 3px;
+    cursor: pointer;
+  }
+  
+  .nav-container {
+    display: flex;
+  }
+  
+  .nav-container li {
+    margin: 0 10px;
+    list-style: none;
+  }
+  
+  .nav-container li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  
+
+  
+  
+  .select-language option {
+    background: black;
+  }
+  

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-db
+spec:
+  selector:
+    matchLabels:
+      role: redis-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: redis-db
+    spec:
+      containers:
+      - name: redis-db
+        image: redis
+        ports:
+        - containerPort: 6379
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-redis
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    role: redis-db

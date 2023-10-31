@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-ruta
+spec:
+  selector:
+    matchLabels:
+      role: redis-ruta
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: redis-ruta
+    spec:
+      containers:
+      - name: redis-pub
+        image: melanialejandralopez/so1_proyecto_redispub 
+        ports:
+        - containerPort: 3300
+      - name: redis-sub
+        image: melanialejandralopez/so1_proyecto_redissub 
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-pub-sub
+spec:
+  ports:
+  - port: 3300
+    targetPort: 3300
+  selector:
+    role: redis-ruta
